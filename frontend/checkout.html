@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MEDIQUICK</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="icomoon/style.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" />
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <link rel="stylesheet" href="css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="css/aos.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script>
+      // Function to load the cart data and update the order details
+      const loadCartDetails = () => {
+        const cartItems =
+          JSON.parse(localStorage.getItem("mediquick_cart")) || [];
+        const orderTableBody = document.getElementById("orderTableBody");
+        const finalTotalElement = document.getElementById("finalTotal");
+        let cartTotal = 0;
+
+        // Check if the cart is empty
+        if (cartItems.length === 0) {
+          orderTableBody.innerHTML = `<tr><td colspan="2" class="text-center">Your cart is empty!</td></tr>`;
+          finalTotalElement.textContent = "Rs 0.00";
+          return;
+        }
+
+        // Loop through the cart items and display them
+        cartItems.forEach((item) => {
+          const itemTotal = item.price * (item.quantity || 1);
+          cartTotal += itemTotal;
+
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${item.name} <strong class="mx-2">x</strong> ${
+            item.quantity || 1
+          }</td>
+            <td>Rs ${itemTotal.toFixed(2)}</td>
+          `;
+          orderTableBody.appendChild(row);
+        });
+
+        var ot = cartItems.reduce(
+          (total, item) => total + item.price * item.quantity,
+          0
+        );
+
+        finalTotal.innerHTML = ot;
+
+        // Update the order total
+        finalTotalElement.textContent = `Rs ${cartTotal.toFixed(2)}`;
+      };
+
+      // Load the cart details when the page loads
+      window.onload = loadCartDetails;
+
+      // Validation and Order Submission
+      async function submitOrder(event) {
+        event.preventDefault();
+
+        // Get form values
+        const firstName = document.getElementById("c_fname").value.trim();
+        const lastName = document.getElementById("c_lname").value.trim();
+        const address = document.getElementById("c_address").value.trim();
+        const email = document.getElementById("c_email_address").value.trim();
+        const phone = document.getElementById("c_phone").value.trim();
+        const paymentMode = document.querySelector(
+          'input[name="payment_mode"]:checked'
+        )?.value;
+
+        // Simple validation
+        if (!firstName || !lastName || !address || !email || !phone) {
+          alert("Please fill in all required fields.");
+          return;
+        }
+
+        // Email validation
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailPattern.test(email)) {
+          alert("Please enter a valid email address.");
+          return;
+        }
+
+        // Phone number validation (for simplicity, assuming only numbers)
+        const phonePattern = /^[0-9]{10}$/;
+        if (!phonePattern.test(phone)) {
+          alert("Please enter a valid phone number.");
+          return;
+        }
+
+        // Create order data*****************************************************************
+        const cartItems =
+          JSON.parse(localStorage.getItem("mediquick_cart")) || [];
+        const orderTotal = cartItems.reduce((total, item) => {
+          // Ensure price and quantity are valid
+          const price = item.price || 0; // Default to 0 if price is undefined
+          const quantity = item.quantity >= 1 ? item.quantity : 1; // Default to 1 if quantity is less than 1
+
+          return total + price * quantity;
+        }, 0);
+        console.log(orderTotal);
+
+        // Create order data object
+        const orderData = {
+          firstName,
+          lastName,
+          address,
+          email,
+          phone,
+          paymentMode,
+          cartItems,
+          orderTotal,
+        };
+        localStorage.setItem("mediquick_cart", JSON.stringify(orderData));
+
+        // Send data to the server
+        try {
+          const response = await fetch(
+            "http://localhost:5000/checkout/create",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(orderData),
+            }
+          );
+
+          if (response.ok) {
+            alert("Order placed successfully!");
+            //localStorage.removeItem("mediquick_cart"); // Clear cart after placing the order
+            window.location.href = "thankyou.html"; // Redirect to the thank you page
+          } else {
+            const responseData = await response.json();
+            alert(
+              `Failed to place the order: ${
+                responseData.message || "Unknown error"
+              }`
+            );
+          }
+        } catch (error) {
+          console.error("Error placing order:", error);
+          alert("An error occurred. Please try again.");
+        }
+      }
+
+      // Save orderData (including cart items and order total) to localStorage
+      const orderData = {
+        firstName,
+        lastName,
+        address,
+        email,
+        phone,
+        paymentMode,
+        cartItems,
+        orderTotal,
+      };
+
+      localStorage.setItem("mediquick_cart", JSON.stringify(orderData));
+    </script>
+  </head>
+
+  <body>
+    <div class="site-wrap">
+      <div class="site-navbar py-2">
+        <div class="container">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="logo">
+              <div class="site-logo">
+                <a href="index.html" class="js-logo-clone">MEDIQUICK</a>
+              </div>
+            </div>
+            <div class="main-nav d-none d-lg-block">
+              <nav
+                class="site-navigation text-right text-md-center"
+                role="navigation"
+              >
+                <ul class="site-menu js-clone-nav d-none d-lg-block">
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="shop.html">Store</a></li>
+                  <li><a href="about.html">About</a></li>
+                  <li><a href="contact.html">Contact</a></li>
+                </ul>
+              </nav>
+            </div>
+            <div class="icons">
+              <a href="#" class="icons-btn d-inline-block js-search-open"
+                ><span class="icon-search"></span
+              ></a>
+              <a href="cart.html" class="icons-btn d-inline-block bag"
+                ><span class="icon-shopping-bag"></span
+              >
+              <a
+                href="#"
+                class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"
+                ><span class="icon-menu"></span
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-light py-3">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 mb-0">
+              <a href="index.html">Home</a> <span class="mx-2 mb-0">/</span
+              ><strong class="text-black">Checkout</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="site-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 mb-5 mb-md-0">
+              <h2 class="h3 mb-3 text-black">Billing Details</h2>
+              <div class="p-3 p-lg-5 border">
+                <div class="form-group row">
+                  <div class="col-md-6">
+                    <label for="c_fname" class="text-black"
+                      >First Name <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="c_fname"
+                      name="c_fname"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="c_lname" class="text-black"
+                      >Last Name <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="c_lname"
+                      name="c_lname"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-md-12">
+                    <label for="c_address" class="text-black"
+                      >Address <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="c_address"
+                      name="c_address"
+                      placeholder="address"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group row mb-5">
+                  <div class="col-md-6">
+                    <label for="c_email_address" class="text-black"
+                      >Email Address <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="c_email_address"
+                      name="c_email_address"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="c_phone" class="text-black"
+                      >Phone <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="c_phone"
+                      name="c_phone"
+                      placeholder="Phone Number"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <h2 class="h3 mb-3 text-black">Your Order</h2>
+              <div class="p-3 p-lg-5 border">
+                <table class="table site-block-order-table mb-5">
+                  <thead>
+                    <th>Product</th>
+                    <th>Total</th>
+                  </thead>
+                  <tbody id="orderTableBody">
+                    <!-- Order details will be dynamically populated here -->
+                  </tbody>
+                </table>
+
+                <!-- Display Order Total before Payment Mode -->
+                <div class="row">
+                  <div class="col-md-12 text-right">
+                    <h4 class="font-weight-bold" style="color: black">
+                      Order Total: <span id="finalTotal"></span>
+                    </h4>
+                  </div>
+                </div>
+
+                <h2 class="h3 mb-3 text-black">Payment Mode</h2>
+                <div class="form-group">
+                  <label class="ml-3">
+                    <input
+                      type="radio"
+                      name="payment_mode"
+                      value="cod"
+                      required
+                    />
+                    Cash on Delivery
+                  </label>
+                </div>
+
+                <div class="form-group">
+                  <button
+                    class="btn btn-primary btn-lg btn-block"
+                    onclick="submitOrder(event)"
+                  >
+                    Place Order
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

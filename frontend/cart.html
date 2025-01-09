@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <style>
+      body {
+        background-color: #e3f2fd; /* Light blue background */
+        color: #00bcd4; /* Primary text color */
+      }
+
+      .table th,
+      .table td {
+        vertical-align: middle;
+        text-align: center;
+      }
+
+      .btn-primary {
+        background-color: #00bcd4; /* Cyan button */
+        border: none;
+      }
+
+      .btn-primary:hover {
+        background-color: #00bcd4; /* Darker cyan */
+      }
+
+      .cart-total {
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: #00bcd4;
+      }
+
+      .cart-container {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .proceed-btn,
+      .clear-btn {
+        background-color: #00bcd4;
+        color: #ffffff;
+        border: none;
+      }
+
+      .proceed-btn:hover,
+      .clear-btn:hover {
+        background-color: #00bcd4;
+      }
+
+      .quantity-input {
+        width: 60px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1 class="text-center">Shopping Cart</h1>
+      <div class="cart-container mt-4">
+        <table class="table table-bordered">
+          <thead class="thead-light">
+            <tr>
+              <!-- Move Remove column to the first position -->
+              <th>Image</th>
+              <th>Product Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody id="cartTableBody">
+            <!-- Product rows will be dynamically populated -->
+          </tbody>
+        </table>
+        <div class="text-right mt-3">
+          <p class="cart-total" style="color: black">
+            Total: Rs. <span id="cartTotal">0.00</span>
+          </p>
+          <button class="btn btn-primary btn-lg btn-block" id="clearCart">
+            Clear Cart
+          </button>
+          <button class="btn btn-primary btn-lg btn-block" id="proceedCheckout">
+            Proceed to Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/cart.js"></script>
+  </body>
+</html>

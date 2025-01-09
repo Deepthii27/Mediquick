@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MEDIQUICK</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="icomoon/style.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      .receipt-container {
+        display: none;
+        max-width: 700px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        font-family: "Rubik", sans-serif;
+      }
+      .receipt-container h3 {
+        margin-bottom: 20px;
+        color: #333;
+      }
+      .receipt-container hr {
+        border-top: 2px solid #333;
+      }
+      .receipt-container table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      .receipt-container table th,
+      .receipt-container table td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      .receipt-container table th {
+        background-color: #f8f8f8;
+        font-weight: bold;
+      }
+      .receipt-container table tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+      .receipt-container p {
+        margin: 20px 0;
+        text-align: center;
+        font-size: 16px;
+        color: #555;
+      }
+      @media print {
+        body * {
+          visibility: hidden;
+        }
+        .receipt-container,
+        .receipt-container * {
+          visibility: visible;
+        }
+        .receipt-container {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="site-wrap">
+      <!-- Navbar Section -->
+      <div class="site-navbar py-2">
+        <div class="container">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="logo">
+              <div class="site-logo">
+                <a href="index.html" class="js-logo-clone">MEDIQUICK</a>
+              </div>
+            </div>
+            <div class="main-nav d-none d-lg-block">
+              <nav
+                class="site-navigation text-right text-md-center"
+                role="navigation"
+              >
+                <ul class="site-menu js-clone-nav d-none d-lg-block">
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="shop.html">Store</a></li>
+                  <li><a href="about.html">About</a></li>
+                  <li class="active"><a href="contact.html">Contact</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Thank You Section -->
+      <div class="bg-light py-3">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 mb-0">
+              <a href="index.html">Home</a> <span class="mx-2 mb-0">/</span>
+              <strong class="text-black">Thank You</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="site-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <span class="icon-check_circle display-3 text-success"></span>
+              <h2 class="display-3 text-black">Thank you!</h2>
+              <p class="lead mb-5">Your order was successfully completed.</p>
+              <p>
+                <button
+                  class="btn btn-md height-auto px-4 py-3 btn-primary"
+                  onclick="printReceipt()"
+                >
+                  Print Receipt
+                </button>
+                <a
+                  href="shop.html"
+                  class="btn btn-md height-auto px-4 py-3 btn-secondary"
+                  >Back to Store</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Receipt Section -->
+      <div class="receipt-container">
+        <h3 class="text-center">Mediquick Order Receipt</h3>
+        <hr />
+        <p>
+          <strong>Order ID:</strong> <span id="orderId">123456</span> <br />
+          <strong>Date:</strong>
+          <script>
+            document.write(new Date().toLocaleDateString());
+          </script>
+          <br />
+          <strong>Customer:</strong> <span id="customerName">Deepthi</span>
+          <br />
+          <strong>Email:</strong>
+          <span id="customerEmail">deepthi@example.com</span> <br />
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody id="orderItems">
+            <!-- Order items will be dynamically inserted here -->
+          </tbody>
+          <tfoot>
+            <tr>
+              <th colspan="3" class="text-right">Total</th>
+              <th id="orderTotal">Rs 0.00</th>
+            </tr>
+          </tfoot>
+        </table>
+        <p>Thank you for shopping with us!</p>
+      </div>
+    </div>
+
+    <script>
+      function populateReceipt() {
+        const orderData = JSON.parse(localStorage.getItem("mediquick_cart"));
+
+        if (!orderData) {
+          alert("No order data found.");
+          window.location.href = "index.html";
+          return;
+        }
+
+        // Populate order details
+        document.getElementById("orderId").textContent = Math.floor(
+          Math.random() * 1000000
+        ); // Generate a random order ID
+        document.getElementById("customerName").textContent =
+          orderData.firstName + " " + orderData.lastName;
+        document.getElementById("customerEmail").textContent = orderData.email;
+
+        const orderItemsElement = document.getElementById("orderItems");
+        orderItemsElement.innerHTML = ""; // Clear any previous content
+
+        let finalTotal = 0; // For calculating the overall total
+
+        orderData.cartItems.forEach((item) => {
+          const quantity = item.quantity || 1; // Default to 1 if quantity is not present
+          const itemTotal = item.price * quantity; // Calculate item total
+          finalTotal += itemTotal; // Accumulate the final total
+
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${item.name}</td>
+            <td>${quantity}</td>
+            <td>Rs ${item.price.toFixed(2)}</td>
+            <td>Rs ${itemTotal.toFixed(2)}</td>
+        `;
+          orderItemsElement.appendChild(row);
+        });
+
+        // Set the order total
+        document.getElementById(
+          "orderTotal"
+        ).textContent = `Rs ${finalTotal.toFixed(2)}`;
+
+        // Save the final total back to the orderData object for consistency
+        orderData.orderTotal = finalTotal;
+
+        // Do NOT remove the cart data here; wait until the receipt is printed
+      }
+
+      function printReceipt() {
+        // Display the receipt container
+        const receiptContainer = document.querySelector(".receipt-container");
+        receiptContainer.style.display = "block";
+
+        // Use the print function to print the content
+        window.print();
+
+        // Optionally clear cart data after printing
+        localStorage.removeItem("mediquick_cart");
+      }
+
+      // Populate the receipt on page load
+      window.onload = populateReceipt;
+    </script>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

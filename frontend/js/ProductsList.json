@@ -1,0 +1,107 @@
+[
+  {
+    "pid": "1",
+    "name": "Nutrigro By Complan Delicious Chocolate Flavour Nutrition Powder, 400 gm Jar",
+    "image": "images/product_01.png",
+    "price": "687",
+    "description": "A delicious chocolate-flavored nutrition powder that helps support overall health and well-being, providing essential nutrients. Ideal for adults and children alike."
+  },
+  {
+    "pid": "2",
+    "name": "Dhootapapeshwar Punarnavasav, 450 ml",
+    "image": "images/product_02.png",
+    "price": "142",
+    "description": "Dhootapapeshwar Punarnavasava is a liquid Ayurvedic medicine that is useful in dealing with liver disorders. It has anti-inflammatory properties."
+  },
+  {
+    "pid": "3",
+    "name": "Benadryl Cough Formula Syrup",
+    "image": "images/product_03.png",
+    "price": "71",
+    "description": "Benadryl Cough Formula Syrup belongs to a class of medications called ‘expectorants’ used to treat cough. Coughing (dry or productive) is the body’s way of clearing irritants (like allergens, mucus, or smoke) from airways and preventing infection. There are two types of coughs, namely: Dry cough and chesty cough. A dry cough is tickly and doesn't produce any vicious or thick mucus, while a chesty cough (wet cough) means mucous or sputum is produced to help clear your airways."
+  },
+  {
+    "pid": "4",
+    "name": "Becosules Capsule",
+    "image": "images/product_04.png",
+    "price": "54",
+    "description": "Becosules capsules are intended to address vitamin deficiencies or increased needs for Vitamin B-complex and Vitamin C. These deficiencies can arise from an unbalanced diet, digestive problems, or during pregnancy and breastfeeding when the body requires more vitamins. Becosules can also be helpful during recovery from illness, surgery, or burns, as the body's needs for these vitamins increase."
+  },
+  {
+    "pid": "5",
+    "name": "D-Rise 60K Capsule",
+    "image": "images/product_05.png",
+    "price": "116",
+    "description": "D-Rise 60K Capsule belongs to the class of 'Vitamins', primarily used to treat low blood calcium levels. D-Rise 60K Capsule effectively treats various conditions in the body like Vitamin D deficiency, osteoporosis (weak and brittle bones), hypoparathyroidism (parathyroid glands make low levels of calcium in the body), latent tetany (a muscle disease with low blood calcium levels) and rickets or osteomalacia (softening or deforming of bones due to lack of calcium). Vitamin D deficiency occurs when your body has low Vitamin D levels and is caused by inadequate nutrition, intestinal malabsorption, or lack of sunlight exposure."
+  },
+  {
+    "pid": "6",
+    "name": "Neurobion Forte Tablet",
+    "image": "images/product_06.png",
+    "price": "40",
+    "description": "Neurobion Forte Tablet is a vitamin supplement that helps improve the health of the nervous system, improves metabolism, strengthens the immune system, maintains healthy skin/hair, enhances red blood cell production, promotes liver health, and various body functions. Neurobion Forte Tablet may also be used to treat vitamin deficiencies and neuropathic pain."
+  },
+  {
+    "pid": "7",
+    "name": "Dr. Morepen Gluco One BG-03 Blood Glucose Test Strips, 50 Count",
+    "image": "images/product_07.png",
+    "price": "637",
+    "description": "The Dr Morepen strips are a handy tool for those who wish to keep a check on their blood glucose levels from the comfort of their home or office. These small strips, when used with the Dr. Morepen Gluco One BG-03 Meter, offer an easy and reliable method to monitor glucose levels in your blood. The process is simple and only requires a tiny drop of blood."
+  },
+  {
+    "pid": "8",
+    "name": "Nestle Peptamen Peptide Based Diet Vanilla Flavour Powder, 400 gm",
+    "image": "images/product_08.png",
+    "price": "1745",
+    "description": "Nestle Peptamen Peptide Based Diet Vanilla Flavour Powder is a specially designed nutritional supplement that focuses on supporting your gastrointestinal health and function. This Peptamen powder is formulated with whey peptides. These are known to help maintain the gut lining's integrity and further promote a healthy gut microbiome. A significant aspect of Peptamen protein powder is its easy-to-mix property. It conveniently blends with water, creating a smooth and refreshing drink. Besides, it comes in a palatable vanilla flavour that enhances its consumability. This Peptamen product not only assists in maintaining digestive health but also aids in reducing symptoms associated with gastrointestinal disorders. Clinically tested for its safety and efficacy, this Nestle Peptamen product provides an effective way to support overall digestive health. Be aware that the benefits of Peptamen powder uses extend beyond just taste and convenience."
+  },
+  {
+    "pid": "9",
+    "name": "Calcijoint D3 60K Capsule",
+    "image": "images/product_09.png",
+    "price": "113",
+    "description": "Calcijoint D3 60K Capsule belongs to the class of 'Vitamins', primarily used to treat low blood calcium levels. Calcijoint D3 60K Capsule effectively treats various conditions in the body like Vitamin D deficiency, osteoporosis (weak and brittle bones), hypoparathyroidism (parathyroid glands make low levels of calcium in the body), latent tetany (a muscle disease with low blood calcium levels) and rickets or osteomalacia (softening or deforming of bones due to lack of calcium). Vitamin D deficiency occurs when your body has low Vitamin D levels and is caused by inadequate nutrition, intestinal malabsorption, or lack of sunlight exposure."
+  },
+  {
+    "pid": "10",
+    "name": "Vaseline Intensive Care Deep Moisture Body Lotion 600 ml",
+    "image": "images/product_10.png",
+    "price": "324",
+    "description": "Every day, your skin is exposed to damaging environmental factors like extreme temperatures, low humidity, harsh cleansers, and hot water, all of which can make your skin feel dry. That’s why many put their trust, especially during winters, in India’s No.1 Best-Selling Body Lotion - Vaseline Deep Moisture. It penetrates 5 layers deep into your skin to give you long-lasting moisturisation, even during harsh winters."
+  },
+  {
+    "pid": "11",
+    "name": "Nasoclear Saline Nasal Spray",
+    "image": "images/product_11.png",
+    "price": "62",
+    "description": "Nasoclear Saline Nasal Spray is a highly effective solution for clearing blocked nasal passages. This nasal spray provides soothing relief from congestion due to colds or allergies. As an alcohol-free formulation, it's gentle enough for regular use and safe for children. Plus, the easy-to-use spray bottle makes the application of the saline nasal drops simple and mess-free. So with these nasal drops in your home, you can rest easy knowing that relief is just a spray away for your whole family."
+  },
+  {
+    "pid": "12",
+    "name": "Volini Pain Relief Gel, 75 gm",
+    "image": "images/product_12.png",
+    "price": "224",
+    "description": "Volini Pain Relief Gel, 75 gm is used to relieve acute musculoskeletal pain and osteoarthritis. It effectively reduces pain, swelling, and joint stiffness, thereby improving your ability to move and flex the joint. Osteoarthritis is a long-term musculoskeletal joint disorder that causes damage to the cartilage and surrounding tissues characterized by pain, swelling, stiffness, and loss of function."
+  },
+  {
+    "pid": "13",
+    "name": "Dolo-650 Tablet",
+    "image": "images/product_13.png",
+    "price": "30",
+    "description": "Dolo-650 Tablet belongs to the group of medicines called analgesics (pain killers) and antipyretics (fever-reducing agents) used to reduce fever and treat mild to moderate pain. It is also used to relieve headaches, migraine, toothache, period pain, back pain, muscle pain, and rheumatic pain. Pain and fever are caused by the activation of pain receptors due to the release of certain natural chemicals in the body, like prostaglandin. "
+  },
+  {
+    "pid": "14",
+    "name": "Dabur Glucose-D Instant Energy Powder, 500 gm",
+    "image": "images/product_14.png",
+    "price": "110",
+    "description": "The Dabur Glucose-D with Calcium is a glucose powder that does more than just provide you energy. Its formulation features an impressive more than 99% pure glucose content, making it an effective source of instant energy. On top of this, it also contains calcium that assists in maintaining your bone health. But the benefits don't stop there, as this Dabur Glucose Powder offers a dual advantage of boosting your immunity and supplying essential nutrients for overall well-being.This versatile product is suitable for all ages, making it a go-to for everyone from growing children to sportspersons. This reliable and on-the-go energy source eliminates the need for complicated preparations or clean-ups, providing a seamless way to stay energised throughout your busy day. Dabur Glucose-D Powder is a reliable choice for individuals looking for a fast and effective way to combat fatigue during workouts or daily activities."
+  },
+  {
+    "pid": "15",
+    "name": "Vicks Vaporub, 25 ml",
+    "image": "images/product_15.png",
+    "price": "109",
+    "description": "Vicks VapoRub contains menthol, camphor and eucalyptus oil, known for their therapeutic benefits in cough and cold relief. It provides effective multi-symptom relief from 6 symptoms- blocked nose, breathing difficulty, cough, body ache, headache & muscular stiffness."
+  }
+]

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!-- login.html -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f4f4f9;
+      }
+      .login-container {
+        background: white;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        width: 100%;
+        max-width: 400px;
+      }
+      h2 {
+        margin-bottom: 1rem;
+        text-align: center;
+        color: #333;
+      }
+      .form-group {
+        margin-bottom: 1rem;
+      }
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #555;
+      }
+      input {
+        width: 100%;
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .btn {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        color: white;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Admin Login</h2>
+      <form action="admin.html" method="GET">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <button type="submit" class="btn">Login</button>
+      </form>
+    </div>
+
+    <script>
+      document
+        .querySelector("form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent form submission
+
+          // Get the username and password values
+          const username = document.getElementById("username").value;
+          const password = document.getElementById("password").value;
+
+          // Validate credentials
+          if (username === "mediquick" && password === "mediquick@123") {
+            // Redirect to admin page
+            window.location.href = "admin.html";
+          } else {
+            // Show error message
+            alert("Invalid username or password.");
+          }
+        });
+    </script>
+  </body>
+</html>

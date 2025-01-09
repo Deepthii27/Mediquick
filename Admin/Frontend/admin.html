@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: #f8f9fa;
+      }
+      header {
+        background-color: #343a40;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+      }
+      nav {
+        background-color: #495057;
+        padding: 1rem;
+        color: white;
+        display: flex;
+        justify-content: center;
+      }
+      nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 1rem;
+      }
+      nav a:hover {
+        text-decoration: underline;
+      }
+      .container {
+        padding: 2rem;
+      }
+      .section {
+        margin-bottom: 2rem;
+        background: white;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .section h3 {
+        margin-top: 0;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+      }
+      table th,
+      table td {
+        border: 1px solid #ddd;
+        padding: 0.5rem;
+        text-align: left;
+      }
+      table th {
+        background-color: #f4f4f9;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Admin Dashboard</h1>
+    </header>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#queries">Contact Queries</a>
+    </nav>
+    <div class="container">
+      <div id="home" class="section">
+        <h3>Order Details</h3>
+        <table id="ordersTable">
+          <thead>
+            <tr>
+              <th>Customer Name</th>
+              <th>Address</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Payment Mode</th>
+              <th>Order Details</th>
+              <th>Order Total</th>
+              <th>Status</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Dynamic rows will be added here by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="admin.js"></script>
+  </body>
+</html>

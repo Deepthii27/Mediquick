@@ -1,0 +1,13 @@
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "address": "123 Main Street",
+  "email": "john.doe@example.com",
+  "phone": "1234567890",
+  "paymentMode": "Credit Card",
+  "cartItems": [
+    { "name": "Product 1", "quantity": 2, "price": 50 },
+    { "name": "Product 2", "quantity": 1, "price": 30 }
+  ],
+  "orderTotal": 130
+}
