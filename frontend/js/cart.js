@@ -84,7 +84,7 @@ document.getElementById("proceedCheckout").addEventListener("click", () => {
     } else {
         alert("Proceeding to checkout!");
         // Redirect to checkout page
-        window.location.href = "./checkout.html";
+        window.location.href = "checkout.html";
     }
 });
 
