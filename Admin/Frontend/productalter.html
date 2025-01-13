@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Product Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+      }
+
+      header {
+        background-color: rgb(1, 13, 22);
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      h2 {
+        margin-top: 0;
+        color: #333;
+      }
+
+      label {
+        display: block;
+        margin: 10px 0 5px;
+        font-weight: bold;
+      }
+
+      input,
+      textarea,
+      button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+
+      button {
+        background-color: rgb(1, 13, 22);
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: rgb(1, 13, 22);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      table th,
+      table td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+
+      table th {
+        background-color: #f4f4f9;
+      }
+
+      .remove-btn {
+        background-color: #e74c3c;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .remove-btn:hover {
+        background-color: #c0392b;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Admin Product Management</h1>
+    </header>
+    <div class="container">
+      <h2>Add Product</h2>
+      <form id="productForm" enctype="multipart/form-data">
+        <label for="pid">Product ID</label>
+        <input type="text" id="pid" name="pid" required />
+
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="image">Image</label>
+        <input type="file" id="image" name="image" accept="image/*" required />
+
+        <label for="price">Price</label>
+        <input type="number" id="price" name="price" required />
+
+        <label for="description">Description</label>
+        <textarea
+          id="description"
+          name="description"
+          rows="4"
+          required
+        ></textarea>
+
+        <button type="submit">Add Product</button>
+      </form>
+    </div>
+
+    <div class="container product-list">
+      <h2>Product List</h2>
+      <table id="productTable">
+        <thead>
+          <tr>
+            <th>Product ID</th>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Actions</th>
+            <!-- Actions column for Edit and Remove -->
+          </tr>
+        </thead>
+        <tbody id="productTableBody">
+          <!-- Dynamic rows will be added here by JavaScript -->
+        </tbody>
+      </table>
+    </div>
+
+    <script src="productalter.js"></script>
+  </body>
+</html>

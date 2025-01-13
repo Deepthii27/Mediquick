@@ -12,15 +12,17 @@ fetch('http://localhost:5001/api/admin/orders')
             <td>${order.email}</td>
             <td>${order.phone}</td>
             <td>${order.paymentMode}</td>
-            
-           <td>
-    <div>
-    ${order.cartItems.map(item => `${item.name}, Price=${item.price} Quantity= ${item.quantity !== undefined ? item.quantity : 1}`).join('<br><br>')}
-</div>
-
-
-</td>
-
+            <td>
+              <div>
+                ${order.cartItems
+            .map(
+              (item) =>
+                `${item.name}, Price=${item.price} Quantity= ${item.quantity !== undefined ? item.quantity : 1
+                }`
+            )
+            .join('<br><br>')}
+              </div>
+            </td>
             <td>${order.orderTotal}</td>
             <td>${order.status}</td>
             <td>${new Date(order.date).toLocaleDateString()}</td>

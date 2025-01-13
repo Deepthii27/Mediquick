@@ -1,5 +1,5 @@
 // const PRODUCT_API = "./ProductsList.json"
-const PRODUCT_API = "http://localhost:5000/api/products/pid"
+const PRODUCT_API = "https://mediquick-n6tp.onrender.com/api/products/pid"
 
 const getProductID = () => {
     const UrlParams = new URLSearchParams(window.location.search)

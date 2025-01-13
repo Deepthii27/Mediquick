@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import adminRouter from './routes/adminRouter.js';
+import productRoutes from './routes/productRoutes.js';
 
 dotenv.config();
 
@@ -22,6 +23,8 @@ mongoose
 
 // Routes
 app.use('/api/admin', adminRouter);
+app.use('./products', productRoutes);
+
 
 // Start the server
 const PORT = process.env.PORT || 5001;

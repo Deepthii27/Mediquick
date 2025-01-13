@@ -11,7 +11,7 @@ const app = express();
 app.use(cors()); // This will apply the specific CORS configuration
 
 // MongoDB connection
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/local';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://deepthi:xDzU8KiijjOe672z@deepthi.s9xa4.mongodb.net/mediquick';
 console.log("MongoDB", MONGO_URI)
 mongoose
     .connect(MONGO_URI)
@@ -40,5 +40,5 @@ app.use((req, res) => {
 // Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on https://mediquick-n6tp.onrender.com/:${PORT}`);
 });
