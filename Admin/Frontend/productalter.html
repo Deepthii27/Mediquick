@@ -3,39 +3,81 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Product Page</title>
+    <title>Admin Product Management</title>
+    <link rel="stylesheet" href="style.css" />
     <style>
-      body {
-        font-family: Arial, sans-serif;
+      /* General Reset */
+      * {
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
         background-color: #f4f4f9;
+        color: #333;
+        line-height: 1.6;
       }
 
       header {
-        background-color: rgb(1, 13, 22);
+        background-color: #004d61;
         color: white;
-        padding: 10px 20px;
+        padding: 1rem;
         text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
 
-      .container {
-        max-width: 800px;
-        margin: 20px auto;
-        padding: 20px;
+      header h1 {
+        font-size: 2rem;
+        font-weight: bold;
+      }
+
+      nav {
+        background-color: #006d82;
+        padding: 0.8rem;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1rem;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: #f4f4f9;
+        text-decoration: underline;
+      }
+
+      main {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 1rem;
+      }
+
+      section {
         background: white;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+        padding: 1.5rem;
       }
 
-      h2 {
-        margin-top: 0;
-        color: #333;
+      section h2 {
+        font-size: 1.5rem;
+        color: #004d61;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
       }
 
       label {
         display: block;
-        margin: 10px 0 5px;
+        margin-bottom: 0.5rem;
         font-weight: bold;
       }
 
@@ -43,52 +85,113 @@
       textarea,
       button {
         width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
+        padding: 0.8rem;
+        margin-bottom: 1rem;
         border: 1px solid #ccc;
         border-radius: 5px;
-        font-size: 14px;
+        font-size: 1rem;
+      }
+
+      textarea {
+        resize: none;
       }
 
       button {
-        background-color: rgb(1, 13, 22);
+        background-color: #004d61;
         color: white;
+        font-size: 1rem;
         border: none;
         cursor: pointer;
+        text-transform: uppercase;
+        transition: background-color 0.3s ease;
       }
 
       button:hover {
-        background-color: rgb(1, 13, 22);
+        background-color: #003744;
       }
 
-      table {
+      #productTable {
         width: 100%;
         border-collapse: collapse;
-        margin-top: 20px;
+        margin-top: 1rem;
+        font-size: 0.95rem;
       }
 
-      table th,
-      table td {
-        padding: 10px;
+      #productTable th,
+      #productTable td {
         border: 1px solid #ddd;
+        padding: 0.8rem;
         text-align: left;
       }
 
-      table th {
+      #productTable th {
         background-color: #f4f4f9;
+        color: #004d61;
+        text-transform: uppercase;
+        font-weight: bold;
       }
 
-      .remove-btn {
-        background-color: #e74c3c;
-        color: white;
-        padding: 5px 10px;
-        border: none;
+      #productTable tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      #productTable tbody tr:hover {
+        background-color: #f1f1f1;
+      }
+
+      .actions button {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+        margin: 0 0.2rem;
         border-radius: 5px;
         cursor: pointer;
+        border: none;
+        text-transform: uppercase;
+        transition: background-color 0.3s ease;
       }
 
-      .remove-btn:hover {
-        background-color: #c0392b;
+      .actions .edit-btn {
+        background-color: #ffc107;
+        color: #333;
+      }
+
+      .actions .edit-btn:hover {
+        background-color: #e0a800;
+      }
+
+      .actions .delete-btn {
+        background-color: #dc3545;
+        color: white;
+      }
+
+      .actions .delete-btn:hover {
+        background-color: #c82333;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 1rem;
+        }
+
+        header h1 {
+          font-size: 1.5rem;
+        }
+
+        section {
+          padding: 1rem;
+        }
+
+        input,
+        textarea,
+        button {
+          padding: 0.6rem;
+        }
+
+        #productTable th,
+        #productTable td {
+          font-size: 0.85rem;
+          padding: 0.6rem;
+        }
       }
     </style>
   </head>
@@ -96,52 +199,65 @@
     <header>
       <h1>Admin Product Management</h1>
     </header>
-    <div class="container">
-      <h2>Add Product</h2>
-      <form id="productForm" enctype="multipart/form-data">
-        <label for="pid">Product ID</label>
-        <input type="text" id="pid" name="pid" required />
 
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required />
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="contact.html">Contact Queries</a>
+    </nav>
 
-        <label for="image">Image</label>
-        <input type="file" id="image" name="image" accept="image/*" required />
+    <main>
+      <section id="formSection">
+        <h2>Add Product</h2>
+        <form id="productForm">
+          <label for="pid">Product ID</label>
+          <input type="text" id="pid" name="pid" required />
 
-        <label for="price">Price</label>
-        <input type="number" id="price" name="price" required />
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
 
-        <label for="description">Description</label>
-        <textarea
-          id="description"
-          name="description"
-          rows="4"
-          required
-        ></textarea>
+          <label for="image">Image</label>
+          <input
+            type="file"
+            id="image"
+            name="image"
+            accept="image/*"
+            required
+          />
 
-        <button type="submit">Add Product</button>
-      </form>
-    </div>
+          <label for="price">Price</label>
+          <input type="number" id="price" name="price" required />
 
-    <div class="container product-list">
-      <h2>Product List</h2>
-      <table id="productTable">
-        <thead>
-          <tr>
-            <th>Product ID</th>
-            <th>Name</th>
-            <th>Image</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Actions</th>
-            <!-- Actions column for Edit and Remove -->
-          </tr>
-        </thead>
-        <tbody id="productTableBody">
-          <!-- Dynamic rows will be added here by JavaScript -->
-        </tbody>
-      </table>
-    </div>
+          <label for="description">Description</label>
+          <textarea
+            id="description"
+            name="description"
+            rows="4"
+            required
+          ></textarea>
+
+          <button type="submit">Add Product</button>
+        </form>
+      </section>
+
+      <section id="listSection">
+        <h2>Product List</h2>
+        <table id="productTable">
+          <thead>
+            <tr>
+              <th>Product ID</th>
+              <th>Name</th>
+              <th>Image</th>
+              <th>Price</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="productTableBody">
+            <!-- Dynamic content will be added here -->
+          </tbody>
+        </table>
+      </section>
+    </main>
 
     <script src="productalter.js"></script>
   </body>

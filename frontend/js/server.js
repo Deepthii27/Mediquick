@@ -34,6 +34,12 @@ const BillingSchema = new mongoose.Schema({
     orderTotal: { type: Number, required: true },
 });
 
+// Import routes
+const authRoutes = require('./routes/authRoutes');
+
+// Use routes
+app.use('/api/auth', authRoutes);
+
 // Create a model
 const Billing = mongoose.model('Billing', BillingSchema);
 

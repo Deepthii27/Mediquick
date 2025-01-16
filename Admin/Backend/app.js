@@ -6,7 +6,6 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import adminRouter from './routes/adminRouter.js';
 import productRoutes from './routes/productRoutes.js';
-
 dotenv.config();
 
 const app = express();
@@ -23,7 +22,7 @@ mongoose
 
 // Routes
 app.use('/api/admin', adminRouter);
-app.use('./products', productRoutes);
+app.use('/api/products', productRoutes);
 
 
 // Start the server
